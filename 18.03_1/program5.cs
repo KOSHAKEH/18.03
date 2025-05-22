@@ -13,20 +13,16 @@ namespace _18._03_1
             Console.Write("Введите дату в формате ДД.ММ.ГГГГ (например, 22.12.2021): ");
             string inputDate = Console.ReadLine();
 
-            // Проверка корректности ввода даты
             if (!DateTime.TryParseExact(inputDate, "dd.MM.yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime date))
             {
                 Console.WriteLine("Ошибка: Введите дату в формате ДД.ММ.ГГГГ!");
                 return;
             }
 
-            // Определение дня недели
             string dayOfWeek = GetRussianDayOfWeek(date.DayOfWeek);
 
-            // Определение сезона
             string season = GetSeason(date);
 
-            // Вывод результата
             Console.WriteLine($"{season} {dayOfWeek}");
         }
 
@@ -35,7 +31,6 @@ namespace _18._03_1
             int month = date.Month;
             int day = date.Day;
 
-            // Определение сезона по дате
             if ((month == 12 && day >= 1) || month == 1 || month == 2)
                 return "Winter";
             else if ((month == 3 && day >= 1) || month == 4 || month == 5)
